@@ -39,7 +39,13 @@ case "$HADOOP_MAJOR_VERSION" in
     rm -rf /root/persistent-hdfs/etc/hadoop/
     ln -s /root/persistent-hdfs/conf /root/persistent-hdfs/etc/hadoop
     ;;
-
+  2.7)
+    wget http://ftp.wayne.edu/apache/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz
+    echo "Unpacking Hadoop"
+    tar xvzf hadoop-*.tar.gz > /tmp/spark-ec2_hadoop.log
+    rm hadoop-*.tar.gz
+    mv hadoop-2.7.3/ Persistent-hdfs
+    ;;
   *)
      echo "ERROR: Unknown Hadoop version"
      return 1
